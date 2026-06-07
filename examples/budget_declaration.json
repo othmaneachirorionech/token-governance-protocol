@@ -1,0 +1,12 @@
+{
+  "budget_id": "budget-demo-001",
+  "workflow_id": "lead-review-agent",
+  "model": "example-model",
+  "max_input_tokens": 50000,
+  "max_output_tokens": 10000,
+  "max_estimated_cost_usd": 5.0,
+  "warning_threshold_percent": 80,
+  "kill_threshold_percent": 100,
+  "action_on_warning": "emit_warning",
+  "action_on_exceed": "pause_for_review"
+}

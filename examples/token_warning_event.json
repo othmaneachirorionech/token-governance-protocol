@@ -1,0 +1,10 @@
+{
+  "event_type": "token_budget_warning",
+  "budget_id": "budget-demo-001",
+  "workflow_id": "lead-review-agent",
+  "input_tokens_used": 40000,
+  "output_tokens_used": 7000,
+  "estimated_cost_usd": 4.1,
+  "threshold_percent": 80,
+  "timestamp": "2026-06-07T10:00:00Z"
+}
