@@ -16,33 +16,37 @@ TGP defines a minimal control layer:
 
 ```text
 No AI agent execution should continue without a declared and monitored token budget.
+```
 
-Why This Exists
+## Why This Exists
 
 AI agent systems can fail financially before they fail technically.
 
 A workflow may keep running while:
 
-token usage grows silently
-model calls multiply
-retry loops consume budget
-tool calls trigger more model calls
-agents continue beyond the intended scope
-cost becomes visible only after execution
+- token usage grows silently
+- model calls multiply
+- retry loops consume budget
+- tool calls trigger more model calls
+- agents continue beyond the intended scope
+- cost becomes visible only after execution
 
 TGP treats token and cost consumption as an execution control surface, not as an invisible side effect.
 
-What TGP Controls
-Token budget
-Estimated cost
-Model usage
-Execution limits
-Warning thresholds
-Kill-switch thresholds
-Budget exhaustion events
-Pause / stop decisions
-Basic Budget Declaration
+## What TGP Controls
 
+- Token budget
+- Estimated cost
+- Model usage
+- Execution limits
+- Warning thresholds
+- Kill-switch thresholds
+- Budget exhaustion events
+- Pause / stop decisions
+
+## Basic Budget Declaration
+
+```json
 {
   "budget_id": "budget-demo-001",
   "workflow_id": "lead-review-agent",
@@ -55,7 +59,11 @@ Basic Budget Declaration
   "action_on_warning": "emit_warning",
   "action_on_exceed": "pause_for_review"
 }
+```
 
+## Event Example
+
+```json
 {
   "event_type": "token_budget_warning",
   "budget_id": "budget-demo-001",
@@ -66,36 +74,38 @@ Basic Budget Declaration
   "threshold_percent": 80,
   "timestamp": "2026-06-07T10:00:00Z"
 }
-What This Is Not
+```
+
+## What This Is Not
 
 TGP is not:
 
-a billing system
-a pricing registry
-a full observability platform
-a compliance guarantee
-a model router
-a security sandbox
-a replacement for human approval
+- a billing system
+- a pricing registry
+- a full observability platform
+- a compliance guarantee
+- a model router
+- a security sandbox
+- a replacement for human approval
 
 This repository currently defines the protocol specification only.
 
 A reference implementation may be added later.
 
-Relationship to assumption-gate
+## Relationship to assumption-gate
 
-assumption-gate pauses or stops execution when material context changes invalidate original assumptions.
+[`assumption-gate`](https://github.com/othmaneachirorionech/assumption-gate) pauses or stops execution when material context changes invalidate original assumptions.
 
 TGP pauses or stops execution when token or cost budgets exceed declared limits.
 
 Together, they represent small governance primitives for controlled AI agent execution.
 
-Status
+## Status
 
 Draft v0.1.0.
 
 Experimental protocol specification.
 
-License
+## License
 
 MIT License.
